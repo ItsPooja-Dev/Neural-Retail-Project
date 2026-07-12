@@ -110,6 +110,7 @@ elif page == "Customer Analytics":
     else:
 
         st.error("Customer_Analytics_Final.csv not found.")# -------------------------------
+# -------------------------------
 # INVENTORY PAGE
 # -------------------------------
 elif page == "Inventory Optimization":
@@ -118,21 +119,30 @@ elif page == "Inventory Optimization":
 
     st.success("Inventory module integrated successfully.")
 
-    retail = pd.read_csv("Data/online_retail_II_data.csv", encoding="latin1")
+    if os.path.exists("Data/online_retail_II_data.csv"):
 
-    st.subheader("Retail Dataset")
-    st.dataframe(retail.head(20))
+        retail = pd.read_csv(
+            "Data/online_retail_II_data.csv",
+            encoding="latin1"
+        )
 
-    st.subheader("Basic Statistics")
-    st.dataframe(retail.describe())
+        st.subheader("Retail Dataset")
+        st.dataframe(retail.head(20))
 
-    st.subheader("Top 10 Selling Products")
+        st.subheader("Basic Statistics")
+        st.dataframe(retail.describe())
 
-    top_products = (
-        retail.groupby("Description")["Quantity"]
-        .sum()
-        .sort_values(ascending=False)
-        .head(10)
-    )
+        st.subheader("Top 10 Selling Products")
 
-    st.bar_chart(top_products)
+        top_products = (
+            retail.groupby("Description")["Quantity"]
+            .sum()
+            .sort_values(ascending=False)
+            .head(10)
+        )
+
+        st.bar_chart(top_products)
+
+    else:
+
+        st.warning("Retail dataset is not available in the deployed version.")
