@@ -39,6 +39,7 @@ page = st.sidebar.radio(
         "📈 Demand Forecasting",
         "👥 Customer Analytics",
         "📦 Inventory Optimization",
+        "📂 Team Datasets",
         "🚀 Deployment"
     ]
 )
@@ -402,7 +403,14 @@ elif page == "📦 Inventory Optimization":
 
         st.warning("online_retail_II_data.csv not found.")
 
+# =================================
+# TEAM DATASETS
+# =================================
+elif page == "📂 Team Datasets":
 
+    st.header("📂 Team Provided Datasets")
+
+    ...
 # =================================
 # DEPLOYMENT
 # =================================
