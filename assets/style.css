@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Poppins', sans-serif;
+}
+
+.stApp {
+    background: linear-gradient(135deg, #050816, #0B1F3A, #13294B);
+    color: white;
+}
+
+/* Sidebar */
+[data-testid="stSidebar"] {
+    background: rgba(15, 23, 42, 0.95);
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Metric Cards */
+[data-testid="metric-container"] {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.3);
+}
+
+[data-testid="metric-container"]:hover {
+    transform: translateY(-5px);
+    transition: .3s;
+    box-shadow: 0 10px 30px rgba(91,140,255,.35);
+}
+
+/* Buttons */
+.stButton>button {
+    border-radius: 12px;
+    background: linear-gradient(90deg,#4F8CFF,#8B5CF6);
+    color: white;
+    border: none;
+}
+
+/* Tables */
+[data-testid="stDataFrame"] {
+    border-radius: 15px;
+}
+
+/* Hide Streamlit menu */
+#MainMenu,
+footer,
+header {
+    visibility: hidden;
+}
