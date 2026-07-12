@@ -1,0 +1,4 @@
+Model,RMSE,MAPE (%)
+Prophet,106832.12,54.8
+LSTM,89191.2,42.81
+Hybrid,95046.29,46.51

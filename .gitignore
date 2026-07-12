@@ -1,0 +1,13 @@
+# Large datasets
+Data/Retail_Final_Dataset_With_Churn.csv
+Data/online_retail_II_data.csv
+
+# Reports
+Reports/*.zip
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/

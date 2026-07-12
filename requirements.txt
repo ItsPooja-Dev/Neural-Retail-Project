@@ -1,0 +1,14 @@
+streamlit
+pandas
+numpy
+matplotlib
+plotly
+scikit-learn
+xgboost
+joblib
+fastapi
+uvicorn
+mlflow
+python-multipart
+pydantic
+requests
