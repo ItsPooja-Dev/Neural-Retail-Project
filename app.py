@@ -32,7 +32,6 @@ else:
     st.sidebar.write("🤖 Neural Retail")
 st.sidebar.title("Neural Retail")
 st.sidebar.caption("AI Powered Business Intelligence")
-
 page = st.sidebar.radio(
     "Navigation",
     [
