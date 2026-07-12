@@ -189,10 +189,16 @@ elif page == "📈 Demand Forecasting":
 
             fig = px.line(
                 df,
-                y="yhat",
-                title="Demand Forecast Trend",
+                x="ds",
+                y=["yhat", "yhat_lower", "yhat_upper"],
+                title="AI Demand Forecast with Confidence Range",
                 template="plotly_dark"
-            )
+)
+
+            fig.update_layout(
+               xaxis_title="Date",
+              yaxis_title="Forecast Demand"
+)
 
             fig.update_layout(
                 paper_bgcolor="rgba(0,0,0,0)",
@@ -213,11 +219,12 @@ elif page == "👥 Customer Analytics":
 
     st.header("👥 Customer Analytics")
 
-    c1, c2, c3 = st.columns(3)
+    c1, c2, c3, c4 = st.columns(4)
 
-    c1.metric("Customers", "8,932")
-    c2.metric("Retention", "72%")
+    c1.metric("Total Customers", "8,932")
+    c2.metric("Retention Rate", "72%")
     c3.metric("Avg Spending", "₹624")
+    c4.metric("Churn Risk", "28%")
 
     file_path = "data/Customer_Analytics_Final.csv"
 
@@ -225,38 +232,115 @@ elif page == "👥 Customer Analytics":
 
         df = pd.read_csv(file_path)
 
-        st.success("Customer Analytics Loaded")
+        st.success("✅ Customer Analytics Loaded Successfully")
 
-        st.dataframe(df, use_container_width=True)
+        # Preview
+        st.subheader("📋 Customer Data Overview")
+        st.dataframe(
+            df.head(50),
+            use_container_width=True
+        )
 
-        st.subheader("Dataset Shape")
-        st.write(df.shape)
 
-        st.subheader("Dataset Statistics")
-        st.dataframe(df.describe())
+        # Dataset Information
+        col1, col2 = st.columns(2)
 
-        numeric_cols = df.select_dtypes(include="number").columns
+        with col1:
+            st.subheader("📊 Dataset Shape")
+            st.info(f"Rows: {df.shape[0]} | Columns: {df.shape[1]}")
 
-        if len(numeric_cols) > 0:
+        with col2:
+            st.subheader("📈 Customer Segments")
 
-            st.subheader("Numeric Feature Distribution")
+            if "Customer Segment" in df.columns:
 
-            fig = px.histogram(
-                df,
-                x=numeric_cols[0],
+                segment = (
+                    df["Customer Segment"]
+                    .value_counts()
+                    .reset_index()
+                )
+
+                segment.columns = [
+                    "Segment",
+                    "Count"
+                ]
+
+                fig = px.pie(
+                    segment,
+                    names="Segment",
+                    values="Count",
+                    hole=0.5,
+                    title="Customer Segment Distribution",
+                    template="plotly_dark"
+                )
+
+                st.plotly_chart(
+                    fig,
+                    use_container_width=True
+                )
+
+
+        # Churn Analysis
+        if "Churn" in df.columns:
+
+            st.subheader("⚠️ Customer Churn Analysis")
+
+            churn = (
+                df["Churn"]
+                .value_counts()
+                .reset_index()
+            )
+
+            churn.columns = [
+                "Status",
+                "Customers"
+            ]
+
+            fig2 = px.bar(
+                churn,
+                x="Status",
+                y="Customers",
+                title="Churn Prediction Analysis",
                 template="plotly_dark"
             )
 
-            fig.update_layout(
-                paper_bgcolor="rgba(0,0,0,0)",
-                plot_bgcolor="rgba(0,0,0,0)"
+            st.plotly_chart(
+                fig2,
+                use_container_width=True
             )
 
-            st.plotly_chart(fig, use_container_width=True)
+
+        # Monetary Analysis
+        if "Monetary" in df.columns:
+
+            st.subheader("💰 Customer Value Analysis")
+
+            fig3 = px.histogram(
+                df,
+                x="Monetary",
+                nbins=40,
+                title="Customer Spending Distribution",
+                template="plotly_dark"
+            )
+
+            st.plotly_chart(
+                fig3,
+                use_container_width=True
+            )
+
+
+        # Statistics
+        st.subheader("📊 Statistical Summary")
+
+        st.dataframe(
+            df.describe(),
+            use_container_width=True
+        )
+
 
     else:
 
-        st.error("Customer_Analytics_Final.csv not found.")
+        st.error("❌ Customer_Analytics_Final.csv not found.")
 # =================================
 # INVENTORY OPTIMIZATION
 # =================================
