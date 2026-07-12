@@ -43,20 +43,20 @@ if page == "Home":
 
     st.success("Dashboard is running successfully.")
 
-    st.write("""
-This dashboard integrates all team members work.
+    st.markdown("""
+## Platform Overview
 
-✅ Member 1 - Data Collection
+The Neural Retail AI Dashboard is an integrated analytics solution designed to help retail businesses make data-driven decisions through artificial intelligence and interactive visualization.
 
-✅ Member 2 - Demand Forecasting
+### Key Features
 
-✅ Member 3 - Customer Analytics
-
-✅ Member 4 - Inventory Optimization
-
-✅ Member 5 - Dashboard, API & Deployment
+- 📊 Interactive Business Dashboard
+- 📈 AI-Based Demand Forecasting
+- 👥 Customer Segmentation & Analytics
+- 📦 Inventory Optimization
+- ⚡ FastAPI Integration
+- 🐳 Dockerized Deployment
 """)
-
 # -------------------------------
 # DEMAND FORECAST PAGE
 # -------------------------------
