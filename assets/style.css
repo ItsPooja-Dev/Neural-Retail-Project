@@ -49,3 +49,40 @@ footer,
 header {
     visibility: hidden;
 }
+/* Main Title Glow */
+h1 {
+    text-shadow: 0 0 20px rgba(79,140,255,0.6);
+}
+
+/* Section Headers */
+h2, h3 {
+    color: #8B5CF6;
+}
+
+/* Success Cards */
+[data-testid="stAlert"] {
+    background: rgba(16,185,129,0.12);
+    border-radius: 15px;
+    border: 1px solid rgba(16,185,129,0.3);
+}
+
+/* Chart Container */
+.js-plotly-plot {
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+/* Sidebar Text */
+[data-testid="stSidebar"] * {
+    color: white;
+}
+
+/* Radio Navigation */
+div[role="radiogroup"] label {
+    padding: 8px;
+    border-radius: 10px;
+}
+
+div[role="radiogroup"] label:hover {
+    background: rgba(79,140,255,0.2);
+}
