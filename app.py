@@ -410,6 +410,10 @@ elif page == "📂 Team Datasets":
 
     st.header("📂 Team Provided Datasets")
 
+    df = pd.read_csv("data/Customer_Analytics_Final.csv")
+
+    st.dataframe(df.head(100))
+
     ...
 # =================================
 # DEPLOYMENT
