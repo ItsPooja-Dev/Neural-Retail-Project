@@ -108,7 +108,7 @@ https://github.com/ItsPooja-Dev/Neural-Retail-Project
 
 ## 🎥 Demo
 
-Live Demo URL will be updated after deployment.
+https://drive.google.com/file/d/11ZxcUA9U4nkbPv-lyEQWpjTBbF03QFa6/view?usp=sharing
 
 ---
 
